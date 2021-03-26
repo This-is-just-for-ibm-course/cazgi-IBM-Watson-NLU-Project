@@ -1,10 +1,20 @@
 const express = require('express');
+                require('dotenv').config();
 const app = new express();
 
 app.use(express.static('client'))
 
 const cors_app = require('cors');
 app.use(cors_app());
+
+function getNLUInstance(){
+    let api_key = process.env.API_KEY;
+    let api_url = process.env.API_URL;
+
+    const NaturalLanguageUnderstandingV1 = require('ibm-watson/nature-language-understanding/v1');
+    const {IamAuthenticator} = require('ib-watson/auth');
+}
+
 
 app.get("/",(req,res)=>{
     res.render('index.html');
